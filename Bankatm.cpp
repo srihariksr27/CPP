@@ -1,17 +1,24 @@
 #include<iostream>
 using namespace std;
-class atm
+
+class Atm
 {
-int pin=2000;
-int balance=0;
+private:
+
+   int pin=2000;
+   int balance=2500;
+
 public:
-int get_pin(){
+
+int get_pin()
+{
  return pin;
 }
+
 void withdraw(int amt)
 {
-    if(amt>0)
-    {
+ if(amt>0)
+{
     if(amt>balance)
     {
      cout<<"Insufficient Funds"<<endl;
@@ -20,12 +27,13 @@ void withdraw(int amt)
     {
         balance = balance-amt;
          cout<<"Thank you.You have withdrawn "<<amt<<" Successfully"<<endl;
+         cout<<"Your Balance After withdrawl is Rs."<<balance<<endl;
     }
-    }
-    else
-    {
+ }
+ else
+{
         cout<<"Please Enter a valid amount\n";
-    }
+}
 }
 
 void deposit(int amt)
@@ -34,15 +42,16 @@ void deposit(int amt)
     {
         balance = balance+amt;
         cout<<"Thank you.You have deposited "<<amt<<" Successfully"<<endl;
+        cout<<"Your Balance After deposit is Rs."<<balance<<endl;
     }
     else
     {
         cout<<"Please Enter a valid amount"<<endl;
     }
 }
-  void checkBalance()
+void checkBalance()
   {
-   cout<<"Hi Sir/Madam!"<<endl;
+   cout<<"Hi Sir!"<<endl;
    cout<<"Your Balance is Rs."<<balance<<endl;
    cout<<"                  "<<endl;
    cout<<"                  "<<endl;
@@ -55,26 +64,30 @@ while(1)
 {
 int cardpin;
 static int count=0;
-cout<<"////////////////////////////////////////////////////"<<endl;
-cout<<"<----------Welcome to XYZ Bank Atm---------->"<<endl;
-cout<<"<----------Please Enter Card Pin:";
+cout<<"*******************************\n";
+cout<<"\n";
+cout<<"\n";
+cout<<"Welcome to XYZ Bank Atm"<<endl;
+cout<<"\n";
+cout<<"\n";
+cout<<"*******************************\n";
+cout<<"Card Reading.....\n"<<"Done\n";
+cout<<"Please Enter Card Pin:"<<endl;
 cin>>cardpin;
-atm user1;
+Atm user1;
 if(user1.get_pin()==cardpin)
-{
-
-while(1)
 {
     int choice;
     
     int withdraw_amt;
     int deposit_amt;
-    cout<<"Hi Sir/Madam!"<<endl;
-    cout<<"!!!!!!!Welcome to XYZ Bank ATM Machine!!!!!!!!!!"<<endl;
-    cout<<"Services available are:"<<endl;
+
+    cout<<"*******************************************"<<endl;
+    cout<<"Hi User,"<<endl;
+    label:
+    cout<<"Here are the Banking Services available:"<<endl;
     cout<<"                       "<<endl;
-    cout<<"Please select the service:"<<endl;
-    cout<<"///////////////////////////////"<<endl;
+    cout<<"Please select the service you want?:"<<endl;
     cout<<"1.Check Balance"<<endl;
     cout<<"2.Withdraw money"<<endl;
     cout<<"3.Deposit money"<<endl;
@@ -102,28 +115,27 @@ while(1)
     default:
         break;
     }
+int test;
+cout<<"If You want to go back,Press 1"<<endl;
+cin>>test;
+if (test==1)
+  goto label;
 
-}
 }
 else
 {
     count++;
     cout<<"! You have entered wrong pin !"<<endl;
     cout<<"You have "<<3-count<<" attempts left.."<<endl;
-    if(count==3){
+    if(count==3)
+    {
         cout<<"Sorry your card is blocked!"<<endl;
         cout<<"Please visit the XYZ main branch...."<<endl;
         exit(0);
     }
+}
 
 }
-int test;
-cout<<"If You want to Try again,Press 1"<<endl<<"If you wish to go back,Press any other key"<<endl;
-cin>>test;
-if (test==1)
-  continue;
-else
-  exit(0);
-}
+
 return 0;
 }
